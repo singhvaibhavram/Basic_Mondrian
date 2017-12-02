@@ -12,7 +12,7 @@ from utils.read_informs_data import read_tree as read_informs_tree
 import sys, copy, random
 
 DATA_SELECT = 'a'
-DEFAULT_K = 10
+DEFAULT_K = 5
 # sys.setrecursionlimit(50000)
 
 
@@ -27,10 +27,19 @@ def write_to_file(result):
 
 def get_result_one(att_trees, data, k=DEFAULT_K):
     "run basic_mondrian for one time, with k=10"
+
+    for i in range(20):
+        print(data[i])
+
+    print "******************************X***************************"
     print "K=%d" % k
     print "Mondrian"
     result, eval_result = mondrian(att_trees, data, k)
     write_to_file(result)
+
+    for i in range(20):
+        print(result[i])
+
     print "NCP %0.2f" % eval_result[0] + "%"
     print "Running time %0.2f" % eval_result[1] + "seconds"
 
